@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.vscode/
+
+# MacOS files
+.DS_Store
+.eslintcache
