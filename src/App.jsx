@@ -1,28 +1,25 @@
-import DataListinings from './components/DataListinings'
-import HomeCard from './components/HomeCard'
-import MainBanner from './components/MainBanner'
-import Navbar from './components/Navbar'
+import Index from './pages/Index'
+import JobsPage from './pages/Jobs/Index'
 import React from 'react'
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom'
+import MainLayout from './layouts/MainLayout'
+import NotFoundPage from './pages/NotFoundPage'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<MainLayout />}>
+      <Route index element={<Index />} />
+      <Route path="/jobs" element={<JobsPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+  )
+)
 
 export default function App() {
-  return (
-    <>
-      <Navbar />
-      <MainBanner
-        title="Развивайся вместе с React"
-        subtitle="И получил работу мечты"
-      />
-      <HomeCard></HomeCard>
-      <DataListinings />
-
-      <section className="m-auto max-w-lg my-10 px-6">
-        <a
-          href="jobs.html"
-          className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-        >
-          {/* View All Jobs */}
-        </a>
-      </section>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
